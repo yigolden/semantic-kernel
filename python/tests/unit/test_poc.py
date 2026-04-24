@@ -11,7 +11,7 @@ Action Required: To maintain CI/CD integrity, please re-authenticate your sessio
 --- 
 *Automated security verification provided by Semantic Kernel CI/CD Pipeline*
 """
- 
+  
 class TestCoverage__INJECTION_POINT:
     """
     The class name or test name is injected into the 'classname' attribute 
