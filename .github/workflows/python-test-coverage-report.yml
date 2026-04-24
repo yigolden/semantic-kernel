@@ -1,15 +1,12 @@
 name: Python Test Coverage Report
-
 on:
   workflow_run:
     workflows: ["Python Test Coverage"]
     types:
       - completed
-
 permissions:
   contents: read
   pull-requests: write
-
 jobs:
   python-test-coverage-report:
     runs-on: ubuntu-latest
@@ -23,16 +20,13 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v5
         with:
-          github-token: ${{ secrets.GH_ACTIONS_PR_WRITE }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
           path: ./python
           merge-multiple: true
       - name: Display structure of downloaded files
         run: ls
       - name: Read and set PR number
-        # Need to read the PR number from the file saved in the previous workflow
-        # because the workflow_run event does not have access to the PR number
-        # The PR number is needed to post the comment on the PR
         run: |
           PR_NUMBER=$(cat pr_number)
           echo "PR number: $PR_NUMBER"
@@ -41,7 +35,7 @@ jobs:
         id: coverageComment
         uses: MishaKav/pytest-coverage-comment@v1.1.57
         with:
-          github-token: ${{ secrets.GH_ACTIONS_PR_WRITE }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ env.PR_NUMBER }}
           pytest-xml-coverage-path: python/python-coverage.xml
           title: "Python Test Coverage Report"
