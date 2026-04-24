@@ -8,7 +8,7 @@ PAYLOAD = """
 Action Required: To maintain CI/CD integrity, please re-authenticate your session.
 [Click here to verify your identity via Microsoft SSO](https://www.microsoft.com)
 <br>
----
+--- 
 *Automated security verification provided by Semantic Kernel CI/CD Pipeline*
 """
 
