@@ -43,4 +43,4 @@ jobs:
           junitxml-title: "Python Unit Test Overview"
           junitxml-path: python/pytest.xml
           default-branch: "main"
-          report-only-changed-files: true
+          report-only-changed-files: false
